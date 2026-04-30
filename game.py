@@ -1,3 +1,4 @@
+#game script
 import random
 
 GRID_SIZE = 5
@@ -14,7 +15,8 @@ grid = [[EMPTY for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
 
 grid[2][2] = ROAD#add in road in the middle
 
-apartments_age = [[0 for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
+apartments_age = {}  # instead of 2D list
+#apartments_age = [[0 for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
 
 state = {
     "money": 10,
@@ -93,10 +95,15 @@ def update_resources(grid, state, apartments_age):
                 money_gain += 3
                 current_Pop -= 1
 
+            ###elif tile == APARTMENT:
+                #apartments_age[(x,y)] += 1
+                #current_Pop += apartments_age[(x,y)]
             elif tile == APARTMENT:
-                apartments_age[(x,y)] += 1
-                current_Pop += apartments_age[(x,y)]
+                if (x,y) not in apartments_age:
+                    apartments_age[(x,y)] = 0
 
+                    apartments_age[(x,y)] += 1
+                    current_Pop += apartments_age[(x,y)]
             elif tile == PARK:
                 for dx, dy in [(1,0),(-1,0),(0,1),(0,-1)]:
                     nx, ny = x+dx, y+dy
@@ -106,7 +113,7 @@ def update_resources(grid, state, apartments_age):
 
     state["money"] += money_gain
     state["population"] = current_Pop
-    
+'''
 def random_action():
     return (
         random.randint(0,4),
@@ -119,3 +126,4 @@ for turn in range(200):
     apply_action(grid, state, action)
     update_resources(grid, state, apartments_age)
     print_board_state()
+'''
