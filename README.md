@@ -12,6 +12,8 @@ The choice of buildings are
 
 The script runs multiple agents over multiple generations and selects the best ones for the next generation and recombines them together and mutates them a bit, new ones are also added in for diversity.
 
+![image alt](https://github.com/zach1492/zach1492/blob/main/portfolio_images/0C926A06-B94A-4379-80EE-E7E1005DAEE7.jpeg)
+
 ## Technologies
 
  • Python
